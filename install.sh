@@ -1,18 +1,10 @@
-#!/bin/bash
 # assumptions: brew, .zshrc configuration
 
 PYTHON_VERSION=$1
 PROJECT_NAME=$(basename $(pwd))
 
 
-echo "This setup script has been implemented for MacOS"
-echo "Before running this script, be sure to edit your ~/.zshrc file with the following contents:"
-echo '
-export PYENV_ROOT="${HOME}/.pyenv"
-command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
-eval "$(pyenv init -)"
-'
-
+echo "This setup script has been implemented for MacOS+zsh and Linux+bash"
 
 echo "installing python build dependencies for MacOS ..."
 brew install openssl readline sqlite3 xz zlib tcl-tk
@@ -68,11 +60,19 @@ echo "...done installing your requirements.txt"
 
 echo
 echo "----- POST INSTALL INSTRUCTIONS -----"
-echo "* Add the following entry to your ~/.zshrc file if you have not already:"
+echo 'zsh/MacOS shell users, add the following contents to your ~/.zshrc file:'
 echo '
 export PYENV_ROOT="${HOME}/.pyenv"
 command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
 eval "$(pyenv init -)"
 '
+echo ''
+echo 'bash/Linux shell users, add the following contents to your ~/.bashrc file:'
+echo '
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+'
+echo ''
 
 echo "* type 'exec \$SHELL' OR close and reopen this command prompt."
