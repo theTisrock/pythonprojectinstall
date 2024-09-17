@@ -1,5 +1,5 @@
 
-# <u>Python Installer</u> for MacOS
+# <u>Python Installer</u> for MacOS & Linux
 
 #### A complete Python project environment in seconds
 author: <a href="https://www.linkedin.com/in/chris-torok/">Chris Torok</a>
