@@ -21,6 +21,12 @@ Get your project up and running now!
 
 ### Use
 
+Quick install!
+```shell
+source <(curl -s https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/master/install.sh) 3.12.0
+```
+Replace the last arg with whichever Python version you need.
+
 In your favorite terminal application...
 1. Copy the install script or clone this directory into your project: `cp pythonprojectinstall/install.sh myproject`
 2. Make the install script executable: `chmod +x myproject/install.sh`

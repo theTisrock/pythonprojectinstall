@@ -1,4 +1,4 @@
-# assumptions: brew, .zshrc configuration
+# requires brew + gcc + make + (bash | zsh)
 
 PYTHON_VERSION=$1
 PROJECT_NAME=$(basename $(pwd))
