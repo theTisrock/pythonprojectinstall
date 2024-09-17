@@ -6,9 +6,9 @@ PROJECT_NAME=$(basename $(pwd))
 
 echo "This setup script has been implemented for MacOS+zsh and Linux+bash"
 
-echo "installing python build dependencies for MacOS ..."
+echo "installing python build dependencies ..."
 brew install openssl readline sqlite3 xz zlib tcl-tk
-echo "...done installing MacOS python build dependencies."
+echo "...done installing python build dependencies."
 echo ""
 
 
