@@ -5,6 +5,29 @@ PROJECT_NAME=$(basename $(pwd))
 
 
 echo "This setup script has been implemented for MacOS+zsh and Linux+bash"
+echo ""
+
+echo "Checking for required OS dependencies: gcc, bash and brew..."
+echo ""
+gcc --version
+if [ $? -ne 0 ]
+then
+  echo "gcc must be installed to continue. Installation aborted."
+  exit $?
+fi
+make --version
+if [ $? -ne 0 ]
+then
+  echo "make must be installed to continue. Installation aborted."
+  exit $?
+fi
+brew --version
+if [ $? -ne 0 ]
+then
+  echo "brew must be installed to continue. Installation aborted."
+  exit $?
+fi
+echo ""
 
 echo "installing python build dependencies ..."
 brew install openssl readline sqlite3 xz zlib tcl-tk
