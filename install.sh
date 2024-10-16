@@ -44,7 +44,6 @@ echo ""
 echo "installing python version ${PYTHON_VERSION} ..."
 pyenv install -s "${PYTHON_VERSION}"
 echo "...done installing Python ${PYTHON_VERSION}"
-echo ""
 
 
 echo "install & configure the python virtual environment for this project ..."
@@ -52,11 +51,20 @@ pyenv virtualenv "${PYTHON_VERSION}" "${PROJECT_NAME}_py${PYTHON_VERSION}"
 pyenv versions
 pyenv local "${PROJECT_NAME}_py${PYTHON_VERSION}"
 echo "...done installing & configuring the python virtual environment for this project."
-echo ""
 
+EXPECTED_PYTHON_VERSION="Python ${PYTHON_VERSION}"
+# echo "CHANGING PYTHON VERSION TO TEST VERSION MATCHING ENFORCEMENT"
+# pyenv local 3.12.0
+ACTUAL_PYTHON_VERSION=$(python --version)
 
-echo "confirming python version is installed into this project's virtual environment ..."
-echo "results -> Expected version ${PYTHON_VERSION} == Actual version is $(python --version)"
+if [ "${EXPECTED_PYTHON_VERSION}" != "${ACTUAL_PYTHON_VERSION}" ]
+then
+  echo "Expected version: ${EXPECTED_PYTHON_VERSION}"
+  echo "Actual version: ${ACTUAL_PYTHON_VERSION}"
+  echo "Stopping installation."
+  exit 1
+fi
+echo "Your chosen Python version installed successfully!"
 echo ""
 
 
