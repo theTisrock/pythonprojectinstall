@@ -4,11 +4,10 @@ PYTHON_VERSION=$1
 PROJECT_NAME=$(basename $(pwd))
 
 
-echo "This setup script has been implemented for MacOS+zsh and Linux+bash"
+echo "Installation implemented for MacOS+zsh and Linux+bash"
 echo ""
 
-echo "Checking for required OS dependencies: gcc, bash and brew..."
-echo ""
+echo "checking for required OS dependencies ..."
 gcc --version
 if [ $? -ne 0 ]
 then
@@ -27,6 +26,7 @@ then
   echo "brew must be installed to continue. Installation aborted."
   exit $?
 fi
+echo "...done checking for OS dependencies."
 echo ""
 
 echo "installing python build dependencies ..."
@@ -51,12 +51,13 @@ pyenv virtualenv "${PYTHON_VERSION}" "${PROJECT_NAME}_py${PYTHON_VERSION}"
 pyenv versions
 pyenv local "${PROJECT_NAME}_py${PYTHON_VERSION}"
 echo "...done installing & configuring the python virtual environment for this project."
+echo ""
 
 EXPECTED_PYTHON_VERSION="Python ${PYTHON_VERSION}"
 # echo "CHANGING PYTHON VERSION TO TEST VERSION MATCHING ENFORCEMENT"
 # pyenv local 3.12.0
 ACTUAL_PYTHON_VERSION=$(python --version)
-
+echo "checking that the intended version of Python matches the actual version ..."
 if [ "${EXPECTED_PYTHON_VERSION}" != "${ACTUAL_PYTHON_VERSION}" ]
 then
   echo "Expected version: ${EXPECTED_PYTHON_VERSION}"
@@ -65,6 +66,7 @@ then
   exit 1
 fi
 echo "Your chosen Python version installed successfully!"
+echo "...done checking the correct version of Python."
 echo ""
 
 
@@ -74,12 +76,36 @@ echo "...done getting latest pip"
 echo ""
 
 echo "testing the project python virtual environment ..."
-echo "installing a sample dependency into our project virtual environment"
-pip install tox
-echo "verify dependencies are installed in our project virtual environment by displaying the tox version below"
-tox --version
-echo "removing the test dependency"
-pip uninstall -y tox
+pip install --no-cache-dir requests
+python -c "import requests;"
+if [ $? -ne 0 ]
+then
+  echo "Python failed to import the 'requests' dependency. This means that Python cannot see the packages associated with this project."
+  echo ""
+  echo "Make sure your PATH environment variable is configured in your shell profile."
+  echo 'zsh/MacOS shell users, add the following contents to your ~/.zshrc file:'
+  echo '
+export PYENV_ROOT="${HOME}/.pyenv"
+command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"
+'
+  echo ''
+  echo 'bash/Linux shell users, add the following contents to your ~/.bashrc file:'
+  echo '
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+'
+  echo ''
+  echo "Rerun the installation once you have configured your PATH."
+  echo "Stopping installation."
+
+
+  exit $?
+fi
+echo "Python dependency imported successfully!"
+echo "Removing the test dependency"
+pip uninstall requests -y
 echo "...done testing project python virtual environment"
 echo ""
 
@@ -89,7 +115,7 @@ pip install -r requirements.txt
 echo "...done installing your requirements.txt"
 
 
-echo
+echo ""
 echo "----- POST INSTALL INSTRUCTIONS -----"
 echo 'zsh/MacOS shell users, add the following contents to your ~/.zshrc file:'
 echo '
