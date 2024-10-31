@@ -2,6 +2,8 @@
 
 PYTHON_VERSION=$1
 PROJECT_NAME=$(basename $(pwd))
+# get shell name
+shell=$(echo "$SHELL" | rev | cut -d '/' -f 1 | rev)
 
 
 echo "Installation implemented for MacOS+zsh and Linux+bash"
@@ -113,6 +115,23 @@ echo ""
 echo "installing your requirements.txt ..."
 pip install -r requirements.txt
 echo "...done installing your requirements.txt"
+echo ""
+
+echo "Configuring the pyenv path..."
+echo "${shell}"
+if ["${shell}" == "bash"]
+then
+  # check file for path contents
+  # if contents are present, finish install
+  # if contents are not present, add them
+fi
+
+
+if ["${shell}" == "zsh"]
+then
+
+fi
+echo "...finished configuring pyenv path."
 
 
 echo ""
