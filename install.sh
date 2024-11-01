@@ -119,6 +119,9 @@ echo ""
 
 echo "Configuring the pyenv path for ${shell}"
 if [[ $shell == "bash" ]]; then
+  if [[ ! -f $HOME/.bashrc ]]; then
+    touch $HOME/.bashrc
+  fi
   # check file for path contents
   grep '# pyenv
   export PATH="$HOME/.pyenv/bin:$PATH"
@@ -132,6 +135,9 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"' >> $HOME/.bashrc
   fi
 elif [[ $shell == 'zsh' ]]; then
+  if [[ ! -f $HOME/.zshrc ]]; then
+    touch $HOME/.zshrc
+  fi
   grep '# pyenv
   export PYENV_ROOT="${HOME}/.pyenv"
   command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
