@@ -145,6 +145,7 @@ eval "$(pyenv init -)"' >> $HOME/.zshrc
   fi
 fi
 echo "...finished configuring pyenv path."
+echo ""
 echo "installation complete!"
 echo ""
 echo "* type 'exec \$SHELL' OR close and reopen this command prompt."
