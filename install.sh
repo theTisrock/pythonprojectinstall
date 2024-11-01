@@ -2,6 +2,8 @@
 
 PYTHON_VERSION=$1
 PROJECT_NAME=$(basename $(pwd))
+# get shell name
+shell=$(echo "$SHELL" | rev | cut -d '/' -f 1 | rev)
 
 
 echo "Installation implemented for MacOS+zsh and Linux+bash"
@@ -113,23 +115,43 @@ echo ""
 echo "installing your requirements.txt ..."
 pip install -r requirements.txt
 echo "...done installing your requirements.txt"
-
-
 echo ""
-echo "----- POST INSTALL INSTRUCTIONS -----"
-echo 'zsh/MacOS shell users, add the following contents to your ~/.zshrc file:'
-echo '
-export PYENV_ROOT="${HOME}/.pyenv"
-command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
-eval "$(pyenv init -)"
-'
-echo ''
-echo 'bash/Linux shell users, add the following contents to your ~/.bashrc file:'
-echo '
+
+echo "Configuring the pyenv path for ${shell}"
+if [[ $shell == "bash" ]]; then
+  if [[ ! -f $HOME/.bashrc ]]; then
+    touch $HOME/.bashrc
+  fi
+  # check file for path contents
+  grep '# pyenv
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"' $HOME/.bashrc
+
+  if [[ $? -ne 0 ]]; then
+    echo '# pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
-'
-echo ''
+eval "$(pyenv virtualenv-init -)"' >> $HOME/.bashrc
+  fi
+elif [[ $shell == 'zsh' ]]; then
+  if [[ ! -f $HOME/.zshrc ]]; then
+    touch $HOME/.zshrc
+  fi
+  grep '# pyenv
+  export PYENV_ROOT="${HOME}/.pyenv"
+  command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
+  eval "$(pyenv init -)"' $HOME/.zshrc
 
+  if [[ $? -ne 0 ]]; then
+    echo '# pyenv
+export PYENV_ROOT="${HOME}/.pyenv"
+command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"' >> $HOME/.zshrc
+  fi
+fi
+echo "...finished configuring pyenv path."
+echo ""
+echo "installation complete!"
+echo ""
 echo "* type 'exec \$SHELL' OR close and reopen this command prompt."
