@@ -80,7 +80,8 @@ echo ""
 echo "testing the project python virtual environment ..."
 pip install --no-cache-dir requests
 python -c "import requests;"
-if [ $? -ne 0 ]
+import_error_code=$?
+if [ $import_error_code -ne 0 ]
 then
   echo "Python failed to import the 'requests' dependency. This means that Python cannot see the packages associated with this project."
   echo ""
@@ -101,9 +102,8 @@ eval "$(pyenv virtualenv-init -)"
   echo ''
   echo "Rerun the installation once you have configured your PATH."
   echo "Stopping installation."
-
-
-  exit $?
+  return $import_error_code
+  exit $import_error_code
 fi
 echo "Python dependency imported successfully!"
 echo "Removing the test dependency"
@@ -155,3 +155,4 @@ echo ""
 echo "installation complete!"
 echo ""
 echo "* type 'exec \$SHELL' OR close and reopen this command prompt."
+
