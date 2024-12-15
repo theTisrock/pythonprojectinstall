@@ -51,7 +51,7 @@ echo ""
 
 echo "installing python version ${PYTHON_VERSION} ..."
 pyenv install -s "${PYTHON_VERSION}"
-python_install_result=$1
+python_install_result=$?
 echo "...done installing Python ${PYTHON_VERSION}"
 
 
