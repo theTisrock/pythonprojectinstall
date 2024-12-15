@@ -73,7 +73,6 @@ then
   echo "Actual version: ${ACTUAL_PYTHON_VERSION}"
   echo "Stopping installation."
   return
-  exit
 fi
 echo "Your chosen Python version installed successfully!"
 echo "...done checking the correct version of Python."
