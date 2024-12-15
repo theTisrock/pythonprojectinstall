@@ -72,7 +72,7 @@ then
   echo "Expected version: ${EXPECTED_PYTHON_VERSION}"
   echo "Actual version: ${ACTUAL_PYTHON_VERSION}"
   echo "Stopping installation."
-  return $python_install_result
+  return
   # exit $python_install_result
 fi
 echo "Your chosen Python version installed successfully!"
