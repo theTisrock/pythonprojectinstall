@@ -14,18 +14,21 @@ gcc --version
 if [ $? -ne 0 ]
 then
   echo "gcc must be installed to continue. Installation aborted."
+  return $?
   exit $?
 fi
 make --version
 if [ $? -ne 0 ]
 then
   echo "make must be installed to continue. Installation aborted."
+  return $?
   exit $?
 fi
 brew --version
 if [ $? -ne 0 ]
 then
   echo "brew must be installed to continue. Installation aborted."
+  return $?
   exit $?
 fi
 echo "...done checking for OS dependencies."
@@ -45,6 +48,7 @@ echo ""
 
 echo "installing python version ${PYTHON_VERSION} ..."
 pyenv install -s "${PYTHON_VERSION}"
+python_install_result=?1
 echo "...done installing Python ${PYTHON_VERSION}"
 
 
@@ -65,7 +69,8 @@ then
   echo "Expected version: ${EXPECTED_PYTHON_VERSION}"
   echo "Actual version: ${ACTUAL_PYTHON_VERSION}"
   echo "Stopping installation."
-  exit 1
+  return $python_install_result
+  exit $python_install_result
 fi
 echo "Your chosen Python version installed successfully!"
 echo "...done checking the correct version of Python."
