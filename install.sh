@@ -11,25 +11,28 @@ echo ""
 
 echo "checking for required OS dependencies ..."
 gcc --version
-if [ $? -ne 0 ]
+dependency_check=$?
+if [ $dependency_check -ne 0 ]
 then
   echo "gcc must be installed to continue. Installation aborted."
-  return $?
-  exit $?
+  return $dependency_check
+  exit $dependency_check
 fi
 make --version
-if [ $? -ne 0 ]
+dependency_check=$?
+if [ $dependency_check -ne 0 ]
 then
   echo "make must be installed to continue. Installation aborted."
-  return $?
-  exit $?
+  return $dependency_check
+  exit $dependency_check
 fi
 brew --version
-if [ $? -ne 0 ]
+dependency_check=$?
+if [ $dependency_check -ne 0 ]
 then
   echo "brew must be installed to continue. Installation aborted."
-  return $?
-  exit $?
+  return $dependency_check
+  exit $dependency_check
 fi
 echo "...done checking for OS dependencies."
 echo ""
@@ -48,7 +51,7 @@ echo ""
 
 echo "installing python version ${PYTHON_VERSION} ..."
 pyenv install -s "${PYTHON_VERSION}"
-python_install_result=?1
+python_install_result=$1
 echo "...done installing Python ${PYTHON_VERSION}"
 
 
