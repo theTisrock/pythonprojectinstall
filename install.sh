@@ -102,7 +102,6 @@ eval "$(pyenv virtualenv-init -)"
   echo ''
   echo "Rerun the installation once you have configured your PATH."
   echo "Stopping installation."
-  return $import_error_code
   exit $import_error_code
 fi
 echo "Python dependency imported successfully!"
