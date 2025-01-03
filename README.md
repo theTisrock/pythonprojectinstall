@@ -21,7 +21,10 @@ Get your project up and running now!
 
 
 ### Use
-#### Quick install!
+#### Quick install! (EXPERIMENTAL)
+
+Unexpected shell exit occurs on some errors.
+eg, when the Python version selected does not exist. 
 
 ```shell
 source <(curl -s https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/master/install.sh) 3.12.0
