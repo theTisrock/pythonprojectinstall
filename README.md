@@ -35,13 +35,26 @@ echo 'PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc
 
 Lastly, refresh the shell by typing `exec $SHELL` 
 
+### Usage
 
 #### Install your Python project environment
 
 In your favorite terminal application...
 1. Change into your project: `cd myproject`
-2. Make sure your project's `requirements.txt` are present under your project's root directory: `myproject/requirements.txt` This step is not required if you don't have dependencies yet. You can install them later.
+2. Make sure your project's `requirements.txt` are present under your project's root directory: `myproject/requirements.txt` 
 3. Run the installation: `pyinstall 3.12.0`
+
+#### Common Operations
+
+To install a different Python version, use the same command and change the version:
+`pyinstall 3.13.1`
+
+To update dependencies, add contents to the `requirements.txt` file and re-run install:
+`pyinstall 3.12.0`
+
+To see available python versions, type: `pyenv install --list`
+
+
 
 ### Congrats!
 
