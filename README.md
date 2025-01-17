@@ -20,10 +20,7 @@ Get your project up and running now!
 - Give execution privileges to the `pyinstall`
 
 
-### Use
-#### Install
-
-Download & Configure the Pyinstall:
+#### Download & Configure
 
 First, make a `bin` in your home directory: `mkdir "${HOME}/bin"` 
 
