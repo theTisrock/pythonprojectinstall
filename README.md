@@ -22,16 +22,18 @@ Get your project up and running now!
 ### Use
 #### Install
 
-install command:
+install commands:
+
+First, make a `bin` in your home directory: `mkdir "${HOME}/bin"` 
 
 ```bash
-curl --output "<file path>" "https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/refs/heads/master/pyinstall" && chmod +x "<file path>/pyinstall"
+curl --output "${HOME}/bin" "https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/refs/heads/master/pyinstall" && chmod +x "${HOME}/bin/pyinstall"
 ```
 
-configure `~/.bashrc` or `~/.zshrc` by adding:
+Lastly, configure `~/.bashrc` or `~/.zshrc` by adding:
 
 `PATH="<pyinstall script directory>:${PATH}"`
-eg, `PATH="${HOME}:${PATH}` 
+eg, `PATH="${HOME}/bin:${PATH}` 
 
 
 #### Local Install!
