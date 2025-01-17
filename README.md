@@ -29,7 +29,9 @@ curl --output "${HOME}/bin" "https://raw.githubusercontent.com/theTisrock/python
 ```
 
 Second, add the following text to your  `~/.bashrc` or `~/.zshrc` by typing 
-`echo 'PATH="${HOME}/bin:${PATH}' >> ~/.bashrc`
+```bash
+echo 'PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc
+```
 
 Lastly, refresh the shell by typing `exec $SHELL` 
 
