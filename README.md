@@ -32,8 +32,7 @@ curl --output "${HOME}/bin" "https://raw.githubusercontent.com/theTisrock/python
 
 Lastly, configure `~/.bashrc` or `~/.zshrc` by adding:
 
-`PATH="<pyinstall script directory>:${PATH}"`
-eg, `PATH="${HOME}/bin:${PATH}` 
+`PATH="${HOME}/bin:${PATH}` 
 
 
 #### Local Install!
