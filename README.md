@@ -8,10 +8,9 @@ Get your project up and running now!
 
 ### Features & Benefits
 
-- Isolates your Python project
+- Isolates your Python project, a Python best practice.
 - Automatic Virtual Environment activation
 - Less time for setup, more time for development
-- <b>new!</b> Automated PATH configuration. 
 
 
 ### Requires
@@ -21,6 +20,20 @@ Get your project up and running now!
 
 
 ### Use
+#### Install
+
+install command:
+
+```bash
+curl --output "<file path>" "https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/refs/heads/master/pyinstall" && chmod +x "<file path>/pyinstall"
+```
+
+configure `~/.bashrc` or `~/.zshrc` by adding:
+
+`PATH="<pyinstall script directory>:${PATH}"`
+eg, `PATH="${HOME}:${PATH}` 
+
+
 #### Local Install!
 
 In your favorite terminal application...
