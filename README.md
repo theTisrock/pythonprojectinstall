@@ -15,14 +15,15 @@ Get your project up and running now!
 
 ### Requires
 
-- Install `gcc`,`make` & `brew`
-- Give execution privileges to the install script `chmod +x install.sh`
+- Dependencies `gcc`,`make` & `brew` must already be installed.
+- Download & configure `pyinstall` 
+- Give execution privileges to the `pyinstall`
 
 
 ### Use
 #### Install
 
-install commands:
+Download & Configure the Pyinstall:
 
 First, make a `bin` in your home directory: `mkdir "${HOME}/bin"` 
 
@@ -30,18 +31,18 @@ First, make a `bin` in your home directory: `mkdir "${HOME}/bin"`
 curl --output "${HOME}/bin" "https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/refs/heads/master/pyinstall" && chmod +x "${HOME}/bin/pyinstall"
 ```
 
-Lastly, configure `~/.bashrc` or `~/.zshrc` by adding:
+Second, add the following text to your  `~/.bashrc` or `~/.zshrc` by typing 
+`echo 'PATH="${HOME}/bin:${PATH}' >> ~/.bashrc`
 
-`PATH="${HOME}/bin:${PATH}` 
+Lastly, refresh the shell by typing `exec $SHELL` 
 
 
-#### Local Install!
+#### Install your Python project environment
 
 In your favorite terminal application...
-1. Copy the install script or clone this directory into your project: `cp pythonprojectinstall/install.sh myproject`
-2. Make the install script executable: `chmod +x myproject/install.sh`
-3. Make sure your project's `requirements.txt` are present under your project's root directory: `myproject/requirements.txt`
-4. Run the installation and provide your desired Python version: `./install.sh 3.12.0`
+1. Change into your project: `cd myproject`
+2. Make sure your project's `requirements.txt` are present under your project's root directory: `myproject/requirements.txt` This step is not required if you don't have dependencies yet. You can install them later.
+3. Run the installation: `pyinstall 3.12.0`
 
 ### Congrats!
 
