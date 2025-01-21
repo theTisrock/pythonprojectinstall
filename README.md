@@ -25,7 +25,7 @@ Get your project up and running now!
 First, make a `bin` in your home directory: `mkdir "${HOME}/bin"` 
 
 ```bash
-curl --output "${HOME}/bin" "https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/refs/heads/master/pyinstall" && chmod +x "${HOME}/bin/pyinstall"
+curl --output "${HOME}/bin/pyinstall" "https://raw.githubusercontent.com/theTisrock/pythonprojectinstall/refs/heads/master/pyinstall" && chmod +x "${HOME}/bin/pyinstall"
 ```
 
 Second, add the following text to your  `~/.bashrc` or `~/.zshrc` by typing 
