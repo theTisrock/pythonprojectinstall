@@ -16,8 +16,6 @@ Get your project up and running now!
 ### Requires
 
 - Dependencies `gcc`,`make` & `brew` must already be installed.
-- Download & configure `pyinstall` 
-- Give execution privileges to the `pyinstall`
 
 
 #### Download & Configure
@@ -33,7 +31,11 @@ Second, add the following text to your  `~/.bashrc` or `~/.zshrc` by typing
 echo 'PATH="${HOME}/bin:${PATH}"' >> ~/.bashrc
 ```
 
-Lastly, refresh the shell by typing `exec $SHELL` 
+Lastly, refresh the shell by typing `exec $SHELL` or just close and reopen your shell.
+
+Now you're ready to begin installing!
+
+
 
 ### Usage
 
@@ -49,10 +51,10 @@ In your favorite terminal application...
 To install a different Python version, use the same command and change the version:
 `pyinstall 3.13.1`
 
-To update dependencies, add contents to the `requirements.txt` file and re-run install:
-`pyinstall 3.12.0`
+As long as all your dependencies are listed in `requirements.txt` they will be installed.
 
-To see available python versions, type: `pyenv install --list`
+To update dependencies, just treat it like an normal Python environment. 
+Simply add the dependencies to your `requirements.txt` and run `pip install -r requirements.txt`. 
 
 
 
