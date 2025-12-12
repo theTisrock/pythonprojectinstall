@@ -70,9 +70,9 @@ Each time you change into your project directory, your Python interpreter and de
 
 ### Problems
 
-###... on Mac
+### ...on Mac
 
-- Desired Outcome: You want a single `python` command
+- [Desired Outcome]: A single `python` command
 - Issue: Pyenv isn't managing the `python` command just yet on your Apple "M" chipped MacBook (2025 and newer). However, if you run `python3 --verison` you'll see it's there.
 - Solution: Tell `pyenv` which version of python you want to treat as global. Install your preferred version like `pyenv install 3.14.2`. Then set it as global like `pyenv global 3.14.2`
 - Outcome: Now you have a common `python` command. Added bonus is the install script will now show your "expected" and "actual" python versions when you install them to confirm they match.
