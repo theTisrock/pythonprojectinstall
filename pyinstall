@@ -32,7 +32,7 @@ echo "...done checking for OS dependencies."
 echo ""
 
 echo "installing python build dependencies ..."
-brew install openssl readline sqlite3 xz zlib tcl-tk
+brew install openssl readline sqlite3 xz zlib libffi tcl-tk pkg-config
 echo "...done installing python build dependencies."
 echo ""
 
